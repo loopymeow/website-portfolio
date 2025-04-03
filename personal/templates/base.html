@@ -1,0 +1,47 @@
+<!-- base.html -->
+{% load static %}
+
+{% if user.is_superuser %}
+<center><b>~signed in as superuser: you are able to view hidden posts~</b></center>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <title>Maisie's Website</title>
+</head>
+<body>
+
+    <div class="headercontainer">
+        <div class="headerleft">
+            {% block images %}
+                <a href="{% url 'personal' %}">
+                    <img style="padding:5px" src="{% static 'topicons/user.png' %}" width="50px" height="50px">
+                </a>
+                <a href="{% url 'home' %}">
+                    <img style="padding:5px" src="{% static 'topicons/housepink.png' %}" width="50px" height="50px">
+                </a>
+            {% endblock %}
+        </div>
+        <div>
+            <center><h1 style="width: 200px">Maisie Marks</h1></center>
+        </div>
+        <div class="headerright">
+            <a href="https://github.com/loopymeow" target="_blank">
+                <img style="padding:5px" src="{% static 'topicons/github.png' %}" width="50px" height="50px">
+            </a>
+            <a href="https://www.linkedin.com/in/maisie-marks-2776472aa/" target="_blank">
+                <img style="padding:5px" src="{% static 'topicons/linkedin.png' %}" width="50px" height="50px">
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

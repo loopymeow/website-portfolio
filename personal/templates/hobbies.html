@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="big-underline rounded"></div>
+<div class="centrecontent">
+    {% for me in personal %}
+        {{ me.description|safe }}
+    {% endfor %}
+</div>
+
+<!-- projects-->
+<div class="project-grids rounded" style="display: flex;padding:0px;margin:0px">
+    <a href="{% url 'home' %}" class="abouttext rounded" style="flex: 1; background-color: rgb(211, 225, 238); border: 5px solid rgb(211, 225, 238); display: flex; justify-content: center; align-items: center; text-decoration: none; color: black; gap: 10px;border-radius: 60px;padding:0.5%; margin:0.5%;">
+        <b>Projects</b>
+    </a>
+    <a href="{% url 'hobbies' %}" class="abouttext rounded" style="flex: 1; background-color: rgb(211, 225, 238); border: 5px solid rgb(157, 195, 230); display: flex; justify-content: center; align-items: center; text-decoration: none; color: black; gap: 10px;border-radius: 60px;padding:0.5%; margin:0.5%;;">
+        <b>Hobbies</b>
+    </a>
+</div>
+
+<div class="project-grids rounded">
+{% for post in posts %}
+    <a class="project rounded" href="{% url "post" post.id %}">
+        <img src="{{ post.icon.url }}" width="200px" height="200px" class="rounded">
+        <div><strong>{{ post.title }}</strong></div>
+            {% if user.is_superuser %}
+            <div>shown = {{ post.shown }}</div>
+            {% endif %}
+        {% for tag in post.tags.all %}
+            <span class="skill">{{ tag.name }}</span>
+        {% endfor %}
+    </a>    
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block images %}
+    <a href="{% url 'personal' %}">
+        <img style="padding:5px" src="{% static 'topicons/userpink.png' %}" width="50px" height="50px">
+    </a>
+    <a href="{% url 'home' %}">
+        <img style="padding:5px" src="{% static 'topicons/house.png' %}" width="50px" height="50px">
+    </a>
+{% endblock %}
+
+{% block content %}
+{% for me in personal %}
+<div class="big-underline rounded"></div>
+<div class="pink-block aboutcontainer rounded" >
+    <img src="../../media/{{ me.icon }}" class="rounded" style="max-height: 40vh; width: auto;">
+    <div class ="abouttext rounded">
+        <div style="width:100%">
+            <h3><center><b>about me</b></center></h3>
+            {{ me.about_me }}
+        </div>
+    </div>
+</div>
+
+<div class="desctext">
+    <div class="pink-block rounded" style="width:50%"> 
+        <div class ="bg-block rounded" style="width:100%; height:100%">
+            <center><h4><b>coursework and uni</b></h4></center>
+
+            {% for coursework in me.abilities.all %}
+                {% if coursework.is_coursework %}
+                    <div class="aboutcontainer">
+                        <div>
+                            <center><p class="ability">{{ coursework.tag }}</p></center>
+                        </div>
+                        <p class="abouttext"> 
+                            {% if user.is_superuser %}
+                                ({{ coursework.priority }}): 
+                            {% endif %}
+                            {{ coursework.description }}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="pink-block rounded" style="width:50%"> 
+        <div class ="bg-block rounded" style="width:100%; height:100%">
+            <center><h4><b>skills and certificates</b></h4></center>
+
+            {% for certificate in me.abilities.all %}
+            {% if not certificate.is_coursework %}
+                <div class="aboutcontainer">
+                    <div>
+                        <center><p class="ability">{{ certificate.tag }}</p></center>
+                    </div>
+                    <p class="abouttext"> 
+                        {% if user.is_superuser %}
+                            ({{ certificate.priority }}): 
+                        {% endif %}
+                        {{ certificate.description }}
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
