@@ -64,4 +64,4 @@ class Me(models.Model):
     abilities = models.ManyToManyField(Ability, related_name='me', blank=True)
 
     def __str__(self):
-        return str(self.id)
+        return "Me"
