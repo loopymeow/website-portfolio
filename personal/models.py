@@ -13,14 +13,14 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images')
 
     def __str__(self):
-        return str(self.id)
+        return self.image.name.split('/')[-1]
     
 class Video(models.Model):
     id = models.AutoField(primary_key=True)
     video = models.FileField(upload_to='videos')
 
     def __str__(self):
-        return str(self.id)
+        return self.video.name.split('/')[-1]
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
