@@ -21,7 +21,9 @@
 <div class="project-grids rounded">
 {% for post in posts %}
     <a class="project rounded" href="{% url "post" post.id %}">
-        <img src="{{ post.icon.url }}" width="200px" height="200px" class="rounded">
+        {% if post.icon %}
+            <img src="{{ post.icon.url }}" width="200px" height="200px" class="rounded">
+        {% endif %}
         <div><strong>{{ post.title }}</strong></div>
             {% if user.is_superuser %}
             <div>shown = {{ post.shown }}</div>

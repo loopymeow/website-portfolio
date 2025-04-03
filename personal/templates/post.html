@@ -5,7 +5,9 @@
 
 {% if post.shown == True or user.is_superuser %}
     <div class="pink-block" > 
-        <img src="{{ post.icon.url }}" width="200px" height="200px" class="rounded">
+        {% if post.icon %}
+            <img src="{{ post.icon.url }}" width="200px" height="200px" class="rounded">
+        {% endif %}
         <h1 class="rounded" >‎ {{ post.title }}</h1>
             {% if user.is_superuser %}
                 <p>‎ shown = {{ post.shown }}</p>
@@ -15,8 +17,10 @@
             {% endfor %}
     </div>
     <center>
-        <a href="{{ post.github_url }}" target=”_blank”>
-        <strong>(project github)</strong>
+        {% if post.show_github_url %}
+            <a href="{{ post.github_url }}" target=”_blank”>
+            <strong>(project github)</strong>
+        {% endif %}
         </a>
     </center>
     <div class="big-underline rounded"></div>
