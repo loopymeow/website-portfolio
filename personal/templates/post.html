@@ -33,13 +33,13 @@
     <center>
     <p><b>Media:</b></p>
         {% for video in post.videos.all %}
-        <video style="max-height: 200px; width: auto;" controls>
+        <video style="max-height: 300px; width: auto;" controls>
             <source src="../../media/{{ video.video }}" type="video/mp4">
         </video>
         {% endfor %}
 
         {% for image in post.images.all %}
-        <img src="../../media/{{ image.image }}" style="max-height: 200px; width: auto;">
+        <img src="../../media/{{ image.image }}" style="max-height: 300px; width: auto;">
         {% endfor %}
     </center>
 {% else %}

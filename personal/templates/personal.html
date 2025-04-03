@@ -38,7 +38,7 @@
                             {% if user.is_superuser %}
                                 ({{ coursework.priority }}): 
                             {% endif %}
-                            {{ coursework.description }}
+                            {{ coursework.description|safe }}
                         </p>
                     </div>
                 {% endif %}
@@ -60,7 +60,7 @@
                         {% if user.is_superuser %}
                             ({{ certificate.priority }}): 
                         {% endif %}
-                        {{ certificate.description }}
+                        {{ certificate.description|safe }}
                     </p>
                 </div>
             {% endif %}
