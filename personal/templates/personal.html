@@ -28,7 +28,7 @@
         <div class ="bg-block rounded" style="width:100%; height:100%">
             <center><h4><b>Coursework and Uni</b></h4></center>
 
-            {% for coursework in me.abilities.all %}
+            {% for coursework in abilities.all %}
                 {% if coursework.is_coursework %}
                     <div class="aboutcontainer">
                         <div>
@@ -50,7 +50,7 @@
         <div class ="bg-block rounded" style="width:100%; height:100%">
             <center><h4><b>Skills and Certificates</b></h4></center>
 
-            {% for certificate in me.abilities.all %}
+            {% for certificate in abilities.all %}
             {% if not certificate.is_coursework %}
                 <div class="aboutcontainer">
                     <div>

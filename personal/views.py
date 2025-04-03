@@ -22,7 +22,8 @@ def hobbies(request):
 
 def personal(request):
     personal = Me.objects.all()
-    return render(request, 'personal.html', {'personal': personal})
+    abilities = Ability.objects.all().order_by('priority')
+    return render(request, 'personal.html', {'personal': personal, 'abilities': abilities})
 
 def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
