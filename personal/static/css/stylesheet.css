@@ -8,6 +8,15 @@
 html {
     background-color:lavenderblush;
 }
+pre code {
+    background-color: rgb(241, 221, 228);
+    color: #333;
+    padding: 1em;
+    border-radius: 5px;
+    font-family: monospace;
+    display: block;
+    overflow-x: auto;
+  }
 /* ----------making "title" stand out */
 h1 {
     color: rgb(21, 22, 20);
