@@ -9,7 +9,7 @@ echo "Database is ready!"
 
 # Running migrations
 echo "Running migrations..."
-python3 manage.py migrate --noinput
+python3 manage.py migrate --run-syncdb --noinput
 
 # Collecting static files
 echo "Collecting static files..."
