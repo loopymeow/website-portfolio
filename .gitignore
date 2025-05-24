@@ -1,9 +1,2 @@
-/website/__pycache__
-/personal/__pycache__
-
-*.sqlite3
-/personal/migrations
-
-/media/icons/*
-/media/images/*
-/media/videos/*
+/src/staticfiles
+/src/personal/static/admin
