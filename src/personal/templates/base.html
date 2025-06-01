@@ -12,7 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
-    <title>Maisie's Website</title>
+    <title>   
+        {% for me in personal %}
+            {{ me.name|safe }}'s Website
+        {% empty %}
+            Your Name's Website
+        {% endfor %}
+    </title>
 </head>
 <body>
 
@@ -28,15 +34,30 @@
             {% endblock %}
         </div>
         <div>
-            <center><h1 style="width: 200px">Maisie Marks</h1></center>
+            <center><h1 style="width: 200px">
+                {% for me in personal %}
+                    {{ me.name|safe }}
+                {% empty %}
+                    Your Name
+                {% endfor %}
+            </h1></center>
         </div>
         <div class="headerright">
-            <a href="https://github.com/loopymeow" target="_blank">
-                <img style="padding:5px" src="{% static 'topicons/github.png' %}" width="50px" height="50px">
-            </a>
-            <a href="https://www.linkedin.com/in/maisie-marks-2776472aa/" target="_blank">
-                <img style="padding:5px" src="{% static 'topicons/linkedin.png' %}" width="50px" height="50px">
-            </a>
+            {% for me in personal %}
+                <a href="{{ me.github_url }}" target="_blank">
+                    <img style="padding:5px" src="{% static 'topicons/github.png' %}" width="50px" height="50px">
+                </a>
+                <a href="{{ me.linkedin_url }}" target="_blank">
+                    <img style="padding:5px" src="{% static 'topicons/linkedin.png' %}" width="50px" height="50px">
+                </a>
+            {% empty %}
+                <a href="https://github.com/" target="_blank">
+                    <img style="padding:5px" src="{% static 'topicons/github.png' %}" width="50px" height="50px">
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <img style="padding:5px" src="{% static 'topicons/linkedin.png' %}" width="50px" height="50px">
+                </a>
+            {% endfor %}
         </div>
     </div>
 

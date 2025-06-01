@@ -58,6 +58,9 @@ class Ability(models.Model):
 
 class Me(models.Model):
     id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, default="Your Name")
+    github_url = models.URLField(max_length=200, blank=True, null=True, default="https://github.com/")
+    linkedin_url = models.URLField(max_length=200, blank=True, null=True, default="https://www.linkedin.com/")
     icon = models.ImageField(upload_to='icons', null=True, blank=True)
     description = models.TextField()
     about_me = models.TextField()
@@ -66,3 +69,8 @@ class Me(models.Model):
 
     def __str__(self):
         return "Me"
+    
+    def save(self, *args, **kwargs):
+        if not self.id and Me.objects.exists():
+            return
+        super().save(*args, **kwargs)
