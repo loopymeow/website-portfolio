@@ -1,3 +1,17 @@
-/src/staticfiles
-/src/personal/static/admin
+# pycache
+/src/website/__pycache__
+/src/personal/__pycache__
+
+# virtual environment
 /.venv
+
+# migrations
+*.sqlite3
+/src/staticfiles
+/src/personal/migrations
+/src/personal/static/admin
+
+#media files
+/src/media/icons/*
+/src/media/images/*
+/src/media/videos/*
